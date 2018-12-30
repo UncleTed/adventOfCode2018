@@ -6,3 +6,11 @@ npm init 	# Create a default package.json
 
 npm install @types/node
 tsc --init	# Create a default tsconfig.json
+
+
+Turn on SSH
+Generate a new ssh key
+Name the key something beside id_rsa (it will appear in your ~/.ssh folder)
+Add the public key to GitHub
+On your terminal, add the ssh identity to ssh-agent with:
+	ssh-add ~/.ssh/the_other_name 
