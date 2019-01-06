@@ -38,12 +38,12 @@ export class Guard {
         return this.totalMinutesSlept;
     }
 
-    mostLikelyToBeAsleepOn() {
-        let minute = '0';
+    mostLikelyToBeAsleepOn(): number {
+        let minute = 0;
         let max = 0;
         for(var key in Object.keys(this.minutesAfterMidnightWhenSleeping)) {
             if(this.minutesAfterMidnightWhenSleeping[key] > max) {
-                minute = key;
+                minute = parseInt(key);
                 max = this.minutesAfterMidnightWhenSleeping[key];
             }
         }

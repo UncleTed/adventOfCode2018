@@ -15,6 +15,10 @@ export class Barracks {
         return this.singleton || (this.singleton = new this());
     }
 
+    allGuards() {
+        return this.guards;
+    }
+
     findOrCreate(logMessage: ShiftLog) {
         let guardId = logMessage.message.split('begins')[0];
         if(logMessage.message.indexOf('begins shift') > -1) {
@@ -47,6 +51,19 @@ export class Barracks {
             return 0;
         }
       })[0];
+    }
+    mostAsleepMinute() : Guard {
+        return this.guards.sort((a,b)=> {
+            if(a.mostLikelyToBeAsleepOn() > b.mostLikelyToBeAsleepOn()) {
+                return -1;
+            }
+            else if(a.mostLikelyToBeAsleepOn() < b.mostLikelyToBeAsleepOn()) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        })[0];
     }
 }
 

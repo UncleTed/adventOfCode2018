@@ -45,8 +45,9 @@ function onclose() {
     });
 
     
-    console.log('most sleepy ', Barracks.SINGLETON().mostSleepyGuard().id);
+    console.log('most sleepy ', Barracks.SINGLETON().mostSleepyGuard());
     console.log('minute ', Barracks.SINGLETON().mostSleepyGuard().mostLikelyToBeAsleepOn());
+    console.log('guard ', Barracks.SINGLETON().mostAsleepMinute());
 }
 
 new ReadFile().readInputFile(online, onclose);
