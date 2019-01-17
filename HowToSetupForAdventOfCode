@@ -1,11 +1,11 @@
 sudo apt install node-js
 sudo apt intall code # VisualStudioCode
-sudo apt intall node-typescript
 
-npm init 	# Create a default package.json
+npm init 			# Create a default package.json
 
 npm install @types/node
-tsc --init	# Create a default tsconfig.json
+npm install typescript		# not globally
+tsc --init			# Create a default tsconfig.json
 
 
 Turn on SSH
