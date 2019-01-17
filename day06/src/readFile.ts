@@ -7,7 +7,7 @@ export class ReadFile {
 
     readInputFile(eachLine: (input: string) => void, onClose: () => void) {
         let reader = readline.createInterface({
-            input: fs.createReadStream('./input.big')
+            input: fs.createReadStream('./input')
         });
         reader.on('line', eachLine);
         reader.on('close', onClose);

@@ -5,10 +5,10 @@ import {Location} from '../src/location';
 let expect = chai.expect;
 
 describe('location', () => {
-    let a = new Location(1,1);
-    let b = new Location(1,6);
-    let c = new Location(8,3);
-    let d = new Location(3,4);
+    let a = new Location(1,1, 'A');
+    let b = new Location(1,6, 'B');
+    let c = new Location(8,3,'C');
+    let d = new Location(3,4,'D');
 
    it('A should be infinite', () => {
        expect(a.isInfiniteComparedTo([b,c,d])).to.be.true;

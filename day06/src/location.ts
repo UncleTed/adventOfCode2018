@@ -1,6 +1,6 @@
 export class Location {
     isFinite: boolean;
-    constructor(public x: number, public y: number) {
+    constructor(public x: number, public y: number, public name: string) {
         this.isFinite = false;
     }
 
