@@ -1,0 +1,23 @@
+{
+  "name": "day06",
+  "version": "1.0.0",
+  "description": "Day Six of the Advent of Code -- we add unit testing",
+  "main": "index.js",
+  "dependencies": {
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "2.2.48",
+    "@types/node": "9.6.41",
+    "chai": "^4.2.0",
+    "mocha": "4.1.0",
+    "ts-node": "^7.0.1"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "mocha -r ts-node/register './spec/**/*.spec.ts'"
+  },
+  "author": "",
+  "license": "ISC"
+}
