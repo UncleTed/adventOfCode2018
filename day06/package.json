@@ -12,7 +12,8 @@
     "@types/node": "9.6.41",
     "chai": "^4.2.0",
     "mocha": "4.1.0",
-    "ts-node": "^7.0.1"
+    "ts-node": "^7.0.1",
+    "tslint": "^5.12.1"
   },
   "scripts": {
     "build": "tsc",
