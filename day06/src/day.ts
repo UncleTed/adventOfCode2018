@@ -8,7 +8,7 @@ let grid: Grid;
 let taxicab = new Taxicab();
 
 
-grid = new Grid(10, 10);
+grid = new Grid(10, 12);
 locations = [];
 
 function* generateAlphabet() {
@@ -40,13 +40,13 @@ function online(input: string) {
 }
 
 function onclose() {
-    for(var x = 1;  x <= grid.width;x++) {
-        for(var y = 1; y <= grid.height; y++) {
+    for(var x = 0;  x < grid.width;x++) {
+        for(var y = 0; y < grid.height; y++) {
             let owner = findMinimumDistance( new Location(x,y,''));
             grid.addOwner(x,y,owner);
         }
     }
-    console.table(grid.getLocations());
+    console.log(grid.getLocations());
 }
 
 
