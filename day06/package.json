@@ -17,7 +17,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "mocha -r ts-node/register './spec/**/*.spec.ts'"
+    "test": "mocha -r ts-node/register './spec/**/*.spec.ts'",
+    "start": "ts-node src/*.ts"
   },
   "author": "",
   "license": "ISC"

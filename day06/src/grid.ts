@@ -11,7 +11,7 @@ export class Grid {
         }
     }
 
-    addDistance(x: number, y:number, owner: string) {
+    addOwner(x: number, y:number, owner: string) {
         this.locations[x][y] = owner;
     }
     getLocations() {

@@ -20,7 +20,6 @@ function* generateAlphabet() {
 
 function findMinimumDistance(gridLocation: Location) {
     let min: number = 1000000;
-    console.log('min ', min);
     let owner = 'none';
     for(var l = 0; l < locations.length; l++ ) {
 
@@ -44,7 +43,7 @@ function onclose() {
     for(var x = 1;  x <= grid.width;x++) {
         for(var y = 1; y <= grid.height; y++) {
             let owner = findMinimumDistance( new Location(x,y,''));
-            grid.addDistance(x,y,owner);
+            grid.addOwner(x,y,owner);
         }
     }
     console.table(grid.getLocations());
