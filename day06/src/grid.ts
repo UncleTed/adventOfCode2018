@@ -6,7 +6,7 @@ export class Grid {
         for(var w =0; w< width;w++  ){
             this.locations[w] = [];
             for(var h =0; h < height; h++) {
-                this.locations[w][h] = 'z';
+                this.locations[w][h] = ' ';
             }
         }
     }

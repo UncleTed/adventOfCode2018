@@ -2,6 +2,7 @@ import {ReadFile} from './readFile';
 import {Grid} from './grid';
 import {Location} from './location';
 import {Taxicab} from './taxicab';
+import { POINT_CONVERSION_COMPRESSED } from 'constants';
 
 let destinations: Location[];
 let grid: Grid;
@@ -10,6 +11,16 @@ let taxicab = new Taxicab();
 
 grid = new Grid(10, 10);
 destinations = [];
+
+function write(msg: string) {
+    process.stdout.write(`${msg}`);
+}
+
+
+function writeln(msg: string) {
+    process.stdout.write(`${msg}\n`);
+}
+
 
 function* generateAlphabet() {
     var i: number = 'A'.charCodeAt(0) ;
@@ -43,15 +54,25 @@ function online(input: string) {
     destinations.push(new Location(Number(xy[0]),Number(xy[1]),alphabet.next().value));
 }
 
+function printGrid() {
+    for(var y=0;y<grid.height;y++) {
+        for(var x=0; x<grid.width;x++) {
+            write(grid.getValue(x,y)+' ');
+        }
+        writeln('');
+    }
+}
+
 function onclose() {
     for(var x = 0;  x < grid.width;x++) {
         for(var y = 0; y < grid.height; y++) {
             let owner = findMinimumDistance( new Location(x,y,''));
             grid.addOwner(x,y,owner);
         }
-    }
-    console.table(grid.getLocations());
+    };
+    printGrid();
 }
+
 
 
 new ReadFile().readInputFile(online, onclose);
