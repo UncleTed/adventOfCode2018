@@ -3,13 +3,13 @@ import {Grid} from './grid';
 import {Location} from './location';
 import {Taxicab} from './taxicab';
 
-let locations: Location[];
+let destinations: Location[];
 let grid: Grid;
 let taxicab = new Taxicab();
 
 
-grid = new Grid(10, 12);
-locations = [];
+grid = new Grid(10, 10);
+destinations = [];
 
 function* generateAlphabet() {
     var i: number = 'A'.charCodeAt(0) ;
@@ -21,12 +21,16 @@ function* generateAlphabet() {
 function findMinimumDistance(gridLocation: Location) {
     let min: number = 1000000;
     let owner = 'none';
-    for(var l = 0; l < locations.length; l++ ) {
+    for(var l = 0; l < destinations.length; l++ ) {
 
-        let distance = taxicab.distance(locations[l], gridLocation);
-        if (distance < min) {
-            min = distance;
-            owner = locations[l].name;
+        if(gridLocation.x == destinations[l].x && gridLocation.y == destinations[l].y) {
+            return destinations[l].name;
+        } else {
+            let distance = taxicab.distance(destinations[l], gridLocation);
+            if (distance < min) {
+                min = distance;
+                owner = destinations[l].name.toLowerCase();
+            }
         }
     }
     return owner;
@@ -36,7 +40,7 @@ let alphabet = generateAlphabet();
 
 function online(input: string) {
     let xy = input.split(',');
-    locations.push(new Location(Number(xy[0]),Number(xy[1]),alphabet.next().value));
+    destinations.push(new Location(Number(xy[0]),Number(xy[1]),alphabet.next().value));
 }
 
 function onclose() {
@@ -46,7 +50,7 @@ function onclose() {
             grid.addOwner(x,y,owner);
         }
     }
-    console.log(grid.getLocations());
+    console.table(grid.getLocations());
 }
 
 

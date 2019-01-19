@@ -22,9 +22,6 @@ describe('grid', ()=> {
                 grid.addOwner(x,y,x+','+y);
             };
         };
-
-        let actualLocations = grid.getLocations();
-
         for(var x = 0; x< 5; x++) {
             for (var y = 0; y< 7; y++) {
                 expect(grid.getValue(x,y)).to.equal(x+','+y);
