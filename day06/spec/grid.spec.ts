@@ -14,4 +14,21 @@ describe('grid', ()=> {
         expect(10).to.be.equal(grid.getLocations().length);
         expect(12).to.be.equal(grid.getLocations()[0].length);
     });
+
+    it('should iterate through the array columns (x) first, then rows(y)', () => {
+        let grid = new Grid(5,7);
+        for(var x = 0; x < 5; x++) {
+            for(var y=0; y < 7; y++) {
+                grid.addOwner(x,y,x+','+y);
+            };
+        };
+
+        let actualLocations = grid.getLocations();
+
+        for(var x = 0; x< 5; x++) {
+            for (var y = 0; y< 7; y++) {
+                expect(grid.getValue(x,y)).to.equal(x+','+y);
+            }
+        }
+    });
 })
