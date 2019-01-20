@@ -1,33 +1,13 @@
 import {ReadFile} from './readFile';
 import {Grid} from './grid';
 import {Location} from './location';
-import {Taxicab} from './taxicab';
-import { POINT_CONVERSION_COMPRESSED } from 'constants';
+import {Utils} from './utils';
 
 let destinations: Location[];
 let grid: Grid;
-let taxicab = new Taxicab();
+let utils = new Utils();
 
-
-grid = new Grid(10, 10);
 destinations = [];
-
-function write(msg: string) {
-    process.stdout.write(`${msg}`);
-}
-
-
-function writeln(msg: string) {
-    process.stdout.write(`${msg}\n`);
-}
-
-
-function* generateAlphabet() {
-    var i: number = 'A'.charCodeAt(0) ;
-    while(true) {
-        yield String.fromCharCode(i++);
-    }
-}
 
 function findMinimumDistance(gridLocation: Location) {
     let min: number = 1000000;
@@ -36,18 +16,19 @@ function findMinimumDistance(gridLocation: Location) {
 
         if(gridLocation.x == destinations[l].x && gridLocation.y == destinations[l].y) {
             return destinations[l].name;
-        } else {
-            let distance = taxicab.distance(destinations[l], gridLocation);
-            if (distance < min) {
-                min = distance;
-                owner = destinations[l].name.toLowerCase();
-            }
+        } 
+    
+        let distance = utils.distance(destinations[l], gridLocation);
+         if (distance < min) {
+            min = distance;
+            owner = destinations[l].name.toLowerCase();
         }
+
     }
     return owner;
 }
 
-let alphabet = generateAlphabet();
+let alphabet = utils.generateAlphabet();
 
 function online(input: string) {
     let xy = input.split(',');
@@ -55,15 +36,20 @@ function online(input: string) {
 }
 
 function printGrid() {
+    let out = '';
     for(var y=0;y<grid.height;y++) {
         for(var x=0; x<grid.width;x++) {
-            write(grid.getValue(x,y)+' ');
+            out += grid.getValue(x,y)+' ';
         }
-        writeln('');
+        out += '\n';
     }
+    console.log(out);
 }
 
+
+
 function onclose() {
+    grid = new Grid(10,10);
     for(var x = 0;  x < grid.width;x++) {
         for(var y = 0; y < grid.height; y++) {
             let owner = findMinimumDistance( new Location(x,y,''));
@@ -71,6 +57,7 @@ function onclose() {
         }
     };
     printGrid();
+
 }
 
 
